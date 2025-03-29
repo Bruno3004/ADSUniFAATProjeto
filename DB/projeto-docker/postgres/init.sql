@@ -1,9 +1,3 @@
-CR-- Criação do banco de dados Escola
-CREATE DATABASE Escola;
-
--- Usar o banco de dados Escola
-\c Escola;
-
 -- Criação da tabela Professor
 CREATE TABLE Professor (
     id_professor SERIAL PRIMARY KEY,
@@ -11,7 +5,6 @@ CREATE TABLE Professor (
     email VARCHAR(100) NOT NULL,
     telefone VARCHAR(20) NOT NULL
 );
-
 -- Criação da tabela Turma
 CREATE TABLE Turma (
     id_turma SERIAL PRIMARY KEY,
@@ -19,7 +12,6 @@ CREATE TABLE Turma (
     id_professor INT NOT NULL REFERENCES Professor(id_professor),
     horario VARCHAR(100) NOT NULL
 );
-
 -- Criação da tabela Aluno
 CREATE TABLE Aluno (
     id_aluno SERIAL PRIMARY KEY,
@@ -31,3 +23,6 @@ CREATE TABLE Aluno (
     email_responsavel VARCHAR(100) NOT NULL,
     informacoes_adicionais TEXT
 );
+-- Inserção de dados de exemplo
+ INSERT INTO Professor (nome_completo, email, telefone) VALUES 
+    ('Alexandre', 'teste@exemplo.com', '41414212');
