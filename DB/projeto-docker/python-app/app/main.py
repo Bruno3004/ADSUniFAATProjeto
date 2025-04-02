@@ -8,17 +8,17 @@ app = Flask(__name__)
 def home():
     return jsonify({"message": "Aplicação Python com PostgreSQL no Docker"})
 
-@app.route('/users')
+@app.route('/professor')
 def get_users():
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute('SELECT id, username, email FROM users')
+    cursor.execute('SELECT id_professor, nome_completo, email, telefone FROM professor')
     users = cursor.fetchall()
     cursor.close()
     close_db_connection(conn)
 
     return jsonify([
-        {"id": user[0], "username": user[1], "email": user[2]}
+        {"id_professor": user[0], "nome_completo": user[1], "email": user[2], "telefone": user[3]}
         for user in users
     ])
 
